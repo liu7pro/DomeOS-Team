@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="DomeOS-Next">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140f24"/>
+      <stop offset="1" stop-color="#070910"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b7a2ff"/>
+      <stop offset="1" stop-color="#5eead4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="14.5" fill="none" stroke="#b7a2ff" stroke-opacity=".2"/>
+  <path d="M14 41a18 18 0 0 1 36 0" fill="none" stroke="url(#line)" stroke-width="2.4" stroke-linecap="round" opacity=".45"/>
+  <path d="M19 41a13 13 0 0 1 26 0" fill="none" stroke="url(#line)" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
+  <path d="M24 41a8 8 0 0 1 16 0" fill="none" stroke="url(#line)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M32 16v20M32 36l-5-5M32 36l5-5" stroke="#d7ccff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="14" y="43.5" width="36" height="2.4" rx="1.2" fill="url(#line)" opacity=".4"/>
+</svg>
