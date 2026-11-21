@@ -1,8 +1,8 @@
 :root {
-  --accent: #4aa8ff;
-  --accent-2: #9b8cff;
-  --accent-soft: rgba(74, 168, 255, 0.11);
-  --accent-line: rgba(74, 168, 255, 0.34);
-  --h1-end: #aecbff;
-  --btn-text: #06101c;
+  --accent: #e25a33;
+  --accent-2: #d99a3e;
+  --accent-soft: rgba(226, 90, 51, 0.14);
+  --accent-line: rgba(226, 90, 51, 0.40);
+  --h1-end: #f0c98b;
+  --btn-text: #1a0d06;
 }
