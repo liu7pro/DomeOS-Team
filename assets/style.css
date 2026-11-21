@@ -925,7 +925,7 @@ button { font: inherit; color: inherit; background: none; border: none; }
   border-color: var(--cursor-ring, #fff);
   background-color: var(--cursor-fill, rgba(255, 255, 255, .12));
 }
-.cursor-ring.is-down { scale: .82; }
+
 @media (hover: none), (pointer: coarse) {
   .cursor-ring, .cursor-dot { display: none; }
 }
@@ -933,3 +933,33 @@ button { font: inherit; color: inherit; background: none; border: none; }
   html, body, a, button, .btn, input, textarea, select, [role="button"] { cursor: none; }
 }
 .cursor-ring.is-hover{rotate:10deg}
+
+/* Team：双轨道旋转，悬停加速 */
+.cursor-ring::before,
+.cursor-ring::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cursor-ring::before {
+  inset: -6px;
+  border: 1px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: rgba(255, 255, 255, .18);
+  animation: cursor-spin 2.2s linear infinite;
+}
+.cursor-ring::after {
+  top: -4px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: cursor-spin 3.4s linear infinite reverse;
+  transform-origin: 2.5px 22px;
+}
+.cursor-ring.is-hover::before { animation-duration: .9s; }
+.cursor-ring.is-hover::after { animation-duration: 1.2s; }
+@keyframes cursor-spin { to { transform: rotate(360deg); } }
