@@ -21,7 +21,8 @@ DomeOS Team 是一个专注于精简与优化 Windows 的团队，是 DomeOS Tec
     ├── logo.svg        团队图标
     ├── fireflyos.svg   FireflyOS 图标
     ├── domeos-next.svg DomeOS-Next 图标
-    └── domeos-ai.svg   DomeOS AI 图标
+    ├── domeos-ai.svg   DomeOS AI 图标
+    └── people/         成员与特别鸣谢头像
 ```
 
 ## 本地预览
