@@ -26,6 +26,26 @@
     });
   }
 
+  var navHover = links ? links.querySelector(".nav-hover") : null;
+  if (links && navHover) {
+    var movePill = function (link) {
+      if (!link || window.matchMedia("(max-width: 760px)").matches) return;
+      navHover.style.setProperty("--pill-x", link.offsetLeft + "px");
+      navHover.style.setProperty("--pill-w", link.offsetWidth + "px");
+      links.classList.add("pill-on");
+    };
+    links.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("mouseenter", function () { movePill(link); });
+      link.addEventListener("focus", function () { movePill(link); });
+    });
+    links.addEventListener("mouseleave", function () {
+      links.classList.remove("pill-on");
+    });
+    links.addEventListener("blur", function () {
+      links.classList.remove("pill-on");
+    }, true);
+  }
+
   var revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(
