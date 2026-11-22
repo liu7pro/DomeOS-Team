@@ -43,39 +43,6 @@
     if (event.persisted) applyStoredTheme();
   });
 
-  /* ---------------- 统一入场动画 ---------------- */
-  var enterEl = document.getElementById("enter");
-  var enterDone = false;
-
-  function finishEnter() {
-    if (!enterEl || enterDone) return;
-    enterDone = true;
-    root.classList.add("enter-done");
-    root.classList.remove("enter-lock");
-    setTimeout(function () {
-      if (enterEl && enterEl.parentNode) enterEl.parentNode.removeChild(enterEl);
-    }, 900);
-  }
-
-  if (enterEl) {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      enterEl.parentNode.removeChild(enterEl);
-      root.classList.add("enter-done");
-    } else {
-      root.classList.add("enter-lock");
-      var enterStart = Date.now();
-      var scheduleEnterEnd = function () {
-        var wait = Math.max(0, 900 - (Date.now() - enterStart));
-        setTimeout(finishEnter, wait);
-      };
-      if (document.readyState === "complete") scheduleEnterEnd();
-      else window.addEventListener("load", scheduleEnterEnd);
-      setTimeout(finishEnter, 2800);
-      enterEl.addEventListener("click", finishEnter);
-      window.addEventListener("keydown", finishEnter, { once: true });
-    }
-  }
-
   function onScroll() {
     if (!header) return;
     header.classList.toggle("scrolled", window.scrollY > 8);
