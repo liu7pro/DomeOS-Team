@@ -367,6 +367,9 @@ html[data-color-mode="light"] .quote p {
   .hero-seal { display: none; }
   .hero::after { opacity: .10; }
 }
+@media (max-width: 760px) {
+  .nav-actions .btn-sm { display: none; }
+}
 @media (max-width: 560px) {
   .hero::after { display: none; }
   .hero h1 { font-size: 46px; }
