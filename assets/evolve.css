@@ -362,6 +362,76 @@ html[data-color-mode="light"] .quote p {
 .cta-panel img { width: 56px; height: 56px; }
 .cta-text h2 { font-size: 24px; letter-spacing: -.025em; }
 
+/* ---------- 关于页 ---------- */
+.about-body { padding: 56px 0 0; }
+.about-hero h1 { font-size: clamp(40px, 6vw, 68px); }
+.about-intro { padding: 32px; }
+.about-intro p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.95;
+}
+.about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.about-meta span {
+  padding: 4px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--ev-mono);
+  font-size: 10.5px;
+  color: var(--faint);
+}
+.about-body .section-head { margin: 64px 0 28px; }
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.link-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(var(--ink-rgb), 0.026);
+  font-size: 14px;
+  transition: border-color .25s, background .25s, transform .25s var(--ease);
+}
+.link-grid a::after {
+  content: "↗";
+  color: var(--accent);
+  font-family: var(--ev-mono);
+  font-size: 12px;
+}
+.link-grid a:hover {
+  border-color: var(--accent-line);
+  background: rgba(var(--ink-rgb), 0.05);
+  transform: translateY(-2px);
+}
+.about-body .quote { margin-top: 64px; }
+.about-contact-block { margin-top: 36px; }
+.about-contact {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.about-contact a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.about-join { margin-top: 24px; }
+.about-legal { margin-top: 14px; font-size: 13px; }
+.about-legal a { color: var(--faint); transition: color .2s; }
+.about-legal a:hover { color: var(--text); }
+
 /* ---------- 响应式 ---------- */
 @media (max-width: 900px) {
   .hero-seal { display: none; }
@@ -369,6 +439,10 @@ html[data-color-mode="light"] .quote p {
 }
 @media (max-width: 760px) {
   .nav-actions .btn-sm { display: none; }
+}
+@media (max-width: 760px) {
+  .link-grid { grid-template-columns: 1fr; }
+  .about-intro { padding: 24px; }
 }
 @media (max-width: 560px) {
   .hero::after { display: none; }
