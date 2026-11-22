@@ -1,3 +1,7 @@
+/* DomeOS Team — 主题令牌
+   深色：印刷暖黑 / 象牙字 / 朱红琥珀
+   浅色：米白纸面 / 墨色字 / 朱红印章 */
+
 :root {
   --accent: #e25a33;
   --accent-2: #d99a3e;
@@ -6,3 +10,96 @@
   --h1-end: #f0c98b;
   --btn-text: #1a0d06;
 }
+
+html[data-color-mode="light"] {
+  color-scheme: light;
+
+  --bg: #f6efe2;
+  --bg-soft: #efe4d2;
+  --surface: #fffaf1;
+  --surface-2: #fbf2e3;
+
+  --border: rgba(60, 38, 20, 0.13);
+  --border-strong: rgba(60, 38, 20, 0.24);
+
+  --text: #241a10;
+  --muted: #6b5641;
+  --faint: #94806a;
+
+  --accent: #c8451f;
+  --accent-2: #b4771c;
+  --accent-soft: rgba(200, 69, 31, 0.10);
+  --accent-line: rgba(200, 69, 31, 0.30);
+  --h1-end: #a8561f;
+  --btn-text: #fff9f0;
+
+  --ink-rgb: 60, 38, 20;
+  --nav-bg: rgba(255, 250, 241, 0.72);
+  --nav-bg-solid: rgba(255, 250, 241, 0.92);
+  --nav-bg-mobile: rgba(255, 250, 241, 0.98);
+  --shadow-strong: rgba(90, 58, 26, 0.22);
+
+  --cursor-glow: rgba(120, 72, 30, 0.18);
+}
+
+html[data-color-mode="light"] .hero h1 {
+  background: linear-gradient(180deg, #2b1a0e 16%, #74401b 60%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+html[data-color-mode="light"] .hero::before {
+  opacity: 0.55;
+}
+
+html[data-color-mode="light"] .bg-scene .orb { opacity: 0.14; }
+html[data-color-mode="light"] .bg-scene .o2 { opacity: 0.10; }
+
+html[data-color-mode="light"] .nav-inner::before {
+  background: linear-gradient(
+    110deg,
+    var(--accent-line),
+    rgba(var(--ink-rgb), 0.12) 38%,
+    transparent 58%,
+    rgba(var(--ink-rgb), 0.08)
+  );
+}
+
+html[data-color-mode="light"] .btn-primary {
+  background: linear-gradient(135deg, var(--accent), #a83a18);
+  box-shadow: 0 10px 26px -14px rgba(150, 48, 18, 0.55);
+}
+
+html[data-color-mode="light"] .btn-primary:hover {
+  box-shadow: 0 16px 32px -14px rgba(150, 48, 18, 0.55);
+}
+
+html[data-color-mode="light"] ::selection {
+  background: rgba(200, 69, 31, 0.22);
+  color: var(--text);
+}
+
+/* 深浅色切换按钮 */
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.theme-toggle:hover {
+  color: var(--text);
+  background: rgba(var(--ink-rgb), 0.07);
+  transform: rotate(-8deg);
+}
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .ic-moon { display: none; }
+html[data-color-mode="light"] .theme-toggle .ic-sun { display: none; }
+html[data-color-mode="light"] .theme-toggle .ic-moon { display: block; }

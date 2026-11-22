@@ -6,6 +6,76 @@
   var links = document.getElementById("navLinks");
   var toggle = document.getElementById("menuToggle");
 
+  /* ---------------- 深浅色 ---------------- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("themeToggle");
+  var themeMeta = document.getElementById("themeColor");
+
+  function syncThemeUI() {
+    var light = root.getAttribute("data-color-mode") === "light";
+    if (themeBtn) {
+      themeBtn.setAttribute("aria-pressed", light ? "true" : "false");
+      themeBtn.setAttribute("aria-label", light ? "切换到深色模式" : "切换到浅色模式");
+    }
+    if (themeMeta) themeMeta.setAttribute("content", light ? "#f6efe2" : "#0e0b08");
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-color-mode") === "light" ? "dark" : "light";
+      root.setAttribute("data-color-mode", next);
+      try { localStorage.setItem("team-theme", next); } catch (e) {}
+      syncThemeUI();
+    });
+  }
+
+  function applyStoredTheme() {
+    var saved = null;
+    try { saved = localStorage.getItem("team-theme"); } catch (e) {}
+    if (saved === "light" || saved === "dark") {
+      root.setAttribute("data-color-mode", saved);
+    }
+    syncThemeUI();
+  }
+
+  applyStoredTheme();
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) applyStoredTheme();
+  });
+
+  /* ---------------- 统一入场动画 ---------------- */
+  var enterEl = document.getElementById("enter");
+  var enterDone = false;
+
+  function finishEnter() {
+    if (!enterEl || enterDone) return;
+    enterDone = true;
+    root.classList.add("enter-done");
+    root.classList.remove("enter-lock");
+    setTimeout(function () {
+      if (enterEl && enterEl.parentNode) enterEl.parentNode.removeChild(enterEl);
+    }, 900);
+  }
+
+  if (enterEl) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      enterEl.parentNode.removeChild(enterEl);
+      root.classList.add("enter-done");
+    } else {
+      root.classList.add("enter-lock");
+      var enterStart = Date.now();
+      var scheduleEnterEnd = function () {
+        var wait = Math.max(0, 900 - (Date.now() - enterStart));
+        setTimeout(finishEnter, wait);
+      };
+      if (document.readyState === "complete") scheduleEnterEnd();
+      else window.addEventListener("load", scheduleEnterEnd);
+      setTimeout(finishEnter, 2800);
+      enterEl.addEventListener("click", finishEnter);
+      window.addEventListener("keydown", finishEnter, { once: true });
+    }
+  }
+
   function onScroll() {
     if (!header) return;
     header.classList.toggle("scrolled", window.scrollY > 8);
